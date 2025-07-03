@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container mt-5">
@@ -9,15 +8,15 @@
             <img src="{% static 'images/nobody.jpg' %}" width="75%" alt="About Me Image">
         </div>
         <div class="col-12 col-md-8">
-            <h2>{{ about.title }}Chris Campbell</h2>
-            {{ about.content | safe }}My name is Chris Campbell, and I am a software engineer with a passion for building innovative solutions. I have experience in various programming languages and frameworks, and I love tackling complex problems with elegant code. When I'm not coding, you can find me exploring the outdoors or diving into a good book.
+            <h2>{{ about.title }}</h2>
+            {{ about.content | safe }}
         </div>
     </div>
     <div class="row">
         <div class="col text-right">
           <!-- Updated on field goes in here -->
     
-          <p class="text-end"><em>Updated on: {{ about.updated_on }}00.58 03/07/2025</em></p>
+          <p class="text-end"><em>Updated on: {{ about.updated_on }}</em></p>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -31,11 +30,6 @@
 
             <!-- add your form here. Your submit button should 
                                 have the classes of btn, btn-secondary -->
-            <form method="post">
-                {{ collaborate_form | crispy }}
-                {% csrf_token %}
-                <button class="btn btn-secondary" type="submit">Submit</button>
-            </form>
         </div>
     </div>
 </div>
