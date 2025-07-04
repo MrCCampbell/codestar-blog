@@ -1,21 +1,19 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Post, Comment
+from .models import About, CollaborateRequest
 
 
-@admin.register(Post)
-class PostAdmin(SummernoteModelAdmin):
+@admin.register(About)
+class AboutAdmin(SummernoteModelAdmin):
     """
-    Lists fields for display in admin, fileds for search,
-    field filters, fields to prepopulate and rich-text editor.
+    Adds rich-text editing of content in admin
     """
-
-    list_display = ('title', 'slug', 'status', 'created_on')
-    search_fields = ['title', 'content']
-    list_filter = ('status', 'created_on',)
-    prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
 
 
-# Register your models here.
-admin.site.register(Comment)
+@admin.register(CollaborateRequest)
+class CollaborateRequestAdmin(admin.ModelAdmin):
+    """
+    Lists message and read fields for display in admin
+    """
+    list_display = ('message', 'read',)
